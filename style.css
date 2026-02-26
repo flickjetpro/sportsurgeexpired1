@@ -1,0 +1,401 @@
+/* ==========================================================================
+   Google Fonts Import
+   Montserrat (Aggressive headers) & Roboto (Clean body text)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Roboto:wght@400;500;700&display=swap');
+
+/* ==========================================================================
+   CSS Variables (Theme & Colors)
+   ========================================================================== */
+:root {
+    /* Carbon Black & Racing Red Palette */
+    --color-primary: #E50914;       
+    --color-primary-hover: #ff1e2a;
+    
+    --bg-base: #050505;             /* Deepest black background */
+    --bg-alt: #121212;              /* Slightly lighter alternating band */
+    --bg-panel: #1a1a1a;            /* Elevated card background */
+    
+    --text-main: #ffffff;           /* Crisp white for headings */
+    --text-muted: #b3b3b3;          /* Soft grey for body text */
+    
+    --border-color: #2a2a2a;
+    
+    /* Typography */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+    
+    /* Layout */
+    --max-content-width: 1050px;
+    --transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   Reset & Base Styles
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   Typography (SEO & Readability)
+   ========================================================================== */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: var(--text-main);
+}
+
+h1 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 6px solid var(--color-primary);
+}
+
+h3 {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-weight: 800;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+}
+
+p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+strong {
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+p a {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 4px;
+}
+
+p a:hover {
+    color: var(--color-primary-hover);
+    text-decoration-color: var(--color-primary-hover);
+}
+
+/* Lists Styling */
+ul {
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    padding-left: 2rem; /* Keep bullets visible */
+}
+
+ul li {
+    margin-bottom: 0.8rem;
+}
+
+ul li strong {
+    color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Layout Fixes (Solving the missing container div)
+   ========================================================================== */
+
+/* 1. Header and Footer (These HAVE the .container div in HTML) */
+.container {
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* 2. Main Content Sections (These DO NOT have a .container div)
+   This CSS centers all elements inside them perfectly without breaking the background */
+.hero-section, .content-section {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.hero-section > *, .content-section > * {
+    max-width: var(--max-content-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Alternating Section Backgrounds */
+.hero-section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    background-color: var(--bg-base);
+    background-image: radial-gradient(circle at top right, rgba(229, 9, 20, 0.15), transparent 40%);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.content-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.content-section:nth-of-type(even) {
+    background-color: var(--bg-alt);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+header {
+    background-color: #000000;
+    border-bottom: 3px solid var(--color-primary);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    padding: 1.2rem 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Helps prevent breaking on mid-sized screens */
+    gap: 1rem;
+}
+
+.logo a {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.logo a::after {
+    content: '.';
+    color: var(--color-primary);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+nav ul li a:hover {
+    color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Buttons (Sharp & Athletic)
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: #ffffff !important;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.8rem 1.8rem;
+    border: 2px solid var(--color-primary);
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: var(--color-primary) !important;
+    box-shadow: 0 0 15px rgba(229, 9, 20, 0.3);
+}
+
+/* ==========================================================================
+   FAQ Section Styling
+   ========================================================================== */
+#faqs .faq-item {
+    background-color: var(--bg-panel);
+    padding: 2rem;
+    margin-bottom: 1.2rem;
+    border-left: 4px solid var(--border-color);
+    transition: var(--transition);
+}
+
+#faqs .faq-item:hover {
+    border-left-color: var(--color-primary);
+    background-color: #222222;
+    transform: translateX(5px);
+}
+
+#faqs .faq-item h3 {
+    margin-top: 0;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-transform: none;
+    letter-spacing: normal;
+    color: var(--text-main);
+}
+
+#faqs .faq-item p {
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+footer {
+    background-color: #000000;
+    padding: 4rem 0 3rem;
+    text-align: center;
+    border-top: 4px solid var(--border-color);
+}
+
+footer p {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.footer-links {
+    margin-top: 1rem;
+}
+
+.footer-links a {
+    color: var(--text-main);
+    margin: 0 12px;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Responsive Design (Tablet & Mobile)
+   ========================================================================== */
+
+/* Tablet layout */
+@media screen and (max-width: 992px) {
+    .hero-section {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+    .content-section {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+    }
+}
+
+/* Mobile Devices */
+@media screen and (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.2rem;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+    
+    .cta-button {
+        width: 100%;
+    }
+    
+    .cta-button .btn {
+        width: 100%;
+        display: block;
+    }
+
+    .hero-section {
+        text-align: center;
+    }
+    
+    .hero-section p {
+        text-align: left; /* Keep text highly readable on mobile */
+    }
+    
+    /* Adjust headings for small screens */
+    h2 {
+        border-left: none;
+        border-bottom: 4px solid var(--color-primary);
+        padding-left: 0;
+        padding-bottom: 0.5rem;
+        display: inline-block;
+    }
+
+    #faqs .faq-item {
+        padding: 1.5rem;
+    }
+    
+    #faqs .faq-item:hover {
+        transform: none; /* Turn off hover shift on touch devices */
+    }
+}
+
+/* Very Small Mobile Screens */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    nav ul {
+        gap: 1rem;
+    }
+    
+    nav ul li a {
+        font-size: 0.9rem;
+    }
+    
+    p, ul li {
+        font-size: 1rem;
+    }
+}
